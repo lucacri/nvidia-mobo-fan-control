@@ -1,5 +1,7 @@
 # NVIDIA Motherboard Fan Control
 
+Created by [lucacri](https://github.com/lucacri)
+
 This service controls NVIDIA GPU fan speed based on temperature when the fans are powered by the motherboard, implementing a custom fan curve with quick ramp-up and slow ramp-down behavior.
 
 ## Hardware Requirements & Context
