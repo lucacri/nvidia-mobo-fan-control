@@ -40,12 +40,12 @@ sudo systemctl daemon-reload
 
 5. Enable the service to start on boot:
 ```bash
-sudo systemctl enable gpu-fan-control
+sudo systemctl enable nvidia-mobo-fan-control
 ```
 
 6. Start the service:
 ```bash
-sudo systemctl start gpu-fan-control
+sudo systemctl start nvidia-mobo-fan-control
 ```
 
 ## Verifying Operation
@@ -71,7 +71,7 @@ journalctl -u nvidia-mobo-fan-control -f
 ## Troubleshooting
 
 If the service fails to start, check:
-1. The script path is correct (/opt/gpu-fan-control/gpu-fan-control.sh)
+1. The script path is correct (/opt/nvidia-mobo-fan-control/nvidia-mobo-fan-control.sh)
 2. The script has execute permissions
 3. The fan control device exists (/sys/devices/platform/nct6687.2592/hwmon/hwmon5/pwm2)
 4. nvidia-smi is installed and working
