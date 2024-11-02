@@ -2,6 +2,19 @@
 
 This service controls the GPU fan speed based on temperature, implementing a custom fan curve with quick ramp-up and slow ramp-down behavior.
 
+## Hardware Requirements & Context
+
+This software was specifically developed for:
+- NVIDIA GPUs only (requires nvidia-smi)
+- Tested on MSI PRO Z690-A DDR4 motherboard
+- Originally designed for a modified NVIDIA P40 card
+- GPU fans must be powered by the motherboard
+- Tested on Ubuntu 22.04
+
+The software was created to address a specific need: controlling GPU fans that are powered by the motherboard rather than the GPU itself. In this setup, fan speed can be controlled by writing values (0-254) directly to the system fan control device (`/sys/devices/platform/nct6687.2592/hwmon/hwmon5/pwm2`).
+
+This solution is particularly useful for server-grade GPUs (like the NVIDIA P40) that have been modified for desktop use, where the fans are connected to motherboard headers instead of being powered by the GPU directly.
+
 ## Installation Steps
 
 1. Create the installation directory:
