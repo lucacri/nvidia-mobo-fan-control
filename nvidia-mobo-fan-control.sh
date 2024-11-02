@@ -55,5 +55,7 @@ while true; do
     echo $new_speed > "$FAN_DEVICE"
     previous_speed=$new_speed
 
+    echo "Sent ${new_speed}"
+
     sleep $INTERVAL
 done
