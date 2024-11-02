@@ -1,10 +1,10 @@
 [Unit]
-Description=GPU Fan Control Service
+Description=NVIDIA Motherboard Fan Control Service
 After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/opt/gpu-fan-control/gpu-fan-control.sh
+ExecStart=/opt/nvidia-mobo-fan-control/nvidia-mobo-fan-control.sh
 Restart=always
 RestartSec=3
 

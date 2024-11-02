@@ -1,6 +1,6 @@
-# GPU Fan Control Service
+# NVIDIA Motherboard Fan Control
 
-This service controls the GPU fan speed based on temperature, implementing a custom fan curve with quick ramp-up and slow ramp-down behavior.
+This service controls NVIDIA GPU fan speed based on temperature when the fans are powered by the motherboard, implementing a custom fan curve with quick ramp-up and slow ramp-down behavior.
 
 ## Hardware Requirements & Context
 
@@ -19,18 +19,18 @@ This solution is particularly useful for server-grade GPUs (like the NVIDIA P40)
 
 1. Create the installation directory:
 ```bash
-sudo mkdir -p /opt/gpu-fan-control
+sudo mkdir -p /opt/nvidia-mobo-fan-control
 ```
 
 2. Copy the files to the installation directory:
 ```bash
-sudo cp gpu-fan-control.sh /opt/gpu-fan-control/
-sudo cp gpu-fan-control.service /etc/systemd/system/
+sudo cp nvidia-mobo-fan-control.sh /opt/nvidia-mobo-fan-control/
+sudo cp nvidia-mobo-fan-control.service /etc/systemd/system/
 ```
 
 3. Make the script executable:
 ```bash
-sudo chmod +x /opt/gpu-fan-control/gpu-fan-control.sh
+sudo chmod +x /opt/nvidia-mobo-fan-control/nvidia-mobo-fan-control.sh
 ```
 
 4. Reload systemd to recognize the new service:
@@ -52,12 +52,12 @@ sudo systemctl start gpu-fan-control
 
 Check if the service is running:
 ```bash
-sudo systemctl status gpu-fan-control
+sudo systemctl status nvidia-mobo-fan-control
 ```
 
 View the service logs:
 ```bash
-journalctl -u gpu-fan-control -f
+journalctl -u nvidia-mobo-fan-control -f
 ```
 
 ## Fan Curve Details
