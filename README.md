@@ -1,0 +1,64 @@
+# GPU Fan Control Service
+
+This service controls the GPU fan speed based on temperature, implementing a custom fan curve with quick ramp-up and slow ramp-down behavior.
+
+## Installation Steps
+
+1. Create the installation directory:
+```bash
+sudo mkdir -p /opt/gpu-fan-control
+```
+
+2. Copy the files to the installation directory:
+```bash
+sudo cp gpu-fan-control.sh /opt/gpu-fan-control/
+sudo cp gpu-fan-control.service /etc/systemd/system/
+```
+
+3. Make the script executable:
+```bash
+sudo chmod +x /opt/gpu-fan-control/gpu-fan-control.sh
+```
+
+4. Reload systemd to recognize the new service:
+```bash
+sudo systemctl daemon-reload
+```
+
+5. Enable the service to start on boot:
+```bash
+sudo systemctl enable gpu-fan-control
+```
+
+6. Start the service:
+```bash
+sudo systemctl start gpu-fan-control
+```
+
+## Verifying Operation
+
+Check if the service is running:
+```bash
+sudo systemctl status gpu-fan-control
+```
+
+View the service logs:
+```bash
+journalctl -u gpu-fan-control -f
+```
+
+## Fan Curve Details
+
+- Below 40°C: Fan speed set to minimum (20)
+- Between 40°C and 75°C: Linear interpolation from 20 to 254
+- Above 75°C: Fan speed set to maximum (254)
+- Fan speed increases immediately when temperature rises
+- Fan speed decreases slowly when temperature drops
+
+## Troubleshooting
+
+If the service fails to start, check:
+1. The script path is correct (/opt/gpu-fan-control/gpu-fan-control.sh)
+2. The script has execute permissions
+3. The fan control device exists (/sys/devices/platform/nct6687.2592/hwmon/hwmon5/pwm2)
+4. nvidia-smi is installed and working
